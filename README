@@ -1,13 +1,33 @@
 # profile
 
-FIXME: write description
+Demonstrates a bug in the profile code when used with Clojure 1.3
 
 ## Usage
 
-FIXME: write
+lein run
 
-## License
+You'll see something like this:
 
-Copyright (C) 2012 FIXME
-
-Distributed under the Eclipse Public License, the same as Clojure.
+    Copying 2 files to /Users/erichanchrow/doodles/clojure/profile/lib
+    Warning: *profile-data* not declared dynamic and thus is not dynamically rebindable, but its name suggests otherwise. Please either indicate ^:dynamic *profile-data* or change the name.
+    Warning: *enable-profiling* not declared dynamic and thus is not dynamically rebindable, but its name suggests otherwise. Please either indicate ^:dynamic *enable-profiling* or change the name.
+    Exception in thread "main" java.lang.IllegalStateException: Can't dynamically bind non-dynamic var: clojure.contrib.profile/*profile-data*
+    	at clojure.lang.Var.pushThreadBindings(Var.java:339)
+    	at clojure.core$push_thread_bindings.invoke(core.clj:1716)
+    	at profile.core$_main.doInvoke(core.clj:5)
+    	at clojure.lang.RestFn.invoke(RestFn.java:397)
+    	at clojure.lang.Var.invoke(Var.java:397)
+    	at user$eval29.invoke(NO_SOURCE_FILE:1)
+    	at clojure.lang.Compiler.eval(Compiler.java:6465)
+    	at clojure.lang.Compiler.eval(Compiler.java:6455)
+    	at clojure.lang.Compiler.eval(Compiler.java:6431)
+    	at clojure.core$eval.invoke(core.clj:2795)
+    	at clojure.main$eval_opt.invoke(main.clj:296)
+    	at clojure.main$initialize.invoke(main.clj:315)
+    	at clojure.main$null_opt.invoke(main.clj:348)
+    	at clojure.main$main.doInvoke(main.clj:426)
+    	at clojure.lang.RestFn.invoke(RestFn.java:421)
+    	at clojure.lang.Var.invoke(Var.java:405)
+    	at clojure.lang.AFn.applyToHelper(AFn.java:163)
+    	at clojure.lang.Var.applyTo(Var.java:518)
+    	at clojure.main.main(main.java:37)
